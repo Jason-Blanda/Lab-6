@@ -1,0 +1,26 @@
+module lab6_tb;
+    reg [7:0] in;
+    wire [31:0] out;
+	 integer idx;
+
+    lab6 ins(out, in);
+    
+    initial
+    begin
+        #100;
+        $write("Starting simulation of rom processor using risc-v isa\n");
+            
+        for(idx = 0; idx < 32; idx = idx + 1)
+        begin
+            in = idx;
+            #100;
+        end
+                
+        #500;
+    end
+
+    initial
+    begin
+        $monitor($time, "  in = %b,  out = %b", in, out);
+    end
+endmodule
